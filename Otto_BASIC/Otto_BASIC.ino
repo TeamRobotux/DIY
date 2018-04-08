@@ -34,7 +34,7 @@ RR 5==>   -----   ------  <== RL 4
 /*MOVEMENTS LIST**************
  * dir=1---> FORWARD/LEFT
  * dir=-1---> BACKWARD/RIGTH
- * T : amount of movement. HIGHER VALUE SLOWER MOVEMENT usually 1000 (from 600 to 1400)
+ * T : amount of movement. HIGHER VALUE SLOWER MOVEMENT usually 1000 (from 600 to 1400) 
  * h: height of mov. around 20
      jump(steps=1, int T = 2000);
      walk(steps, T, dir);
@@ -63,6 +63,7 @@ int distance = 0;
 void setup(){
   //Set the servo pins
   Otto.init(PIN_YL,PIN_YR,PIN_RL,PIN_RR,true);
+  Otto.setTrims(0,0,-45,0);
   Otto.sing(S_connection); //Otto wake up!
   Otto.home();
   delay(50);
@@ -99,14 +100,15 @@ void loop() {
 //-- Function to avoid obstacles
 void obstacleMode(){
       distance = Otto.getDistance();
-      if(distance<15){
-          Otto.sing(S_surprise); 
-               Otto.walk(2,1300,-1); 
-               Otto.turn(3,1000,-1);                
-             delay(50); 
-        }
-        else{
-          Otto.walk(2,1000,1); 
-        }
+      if(distance<4){
+           Otto.sing(S_surprise); 
+           Otto.walk(2,1300,-1); 
+           Otto.turn(3,1000,-1);                
+           delay(50); 
+      }
+      else{
+           Otto.walk(2,1000,1); 
+      }
 }
+
 
