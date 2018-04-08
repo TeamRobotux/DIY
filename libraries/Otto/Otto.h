@@ -6,6 +6,7 @@
 #include <EEPROM.h>
 
 #include <US.h>
+#include <LedMatrix.h>
 #include <BatReader.h>
 
 #include "Otto_mouths.h"
@@ -23,8 +24,8 @@
 #define BIG         30
 
 #define PIN_Buzzer  10
-#define PIN_Trigger 8
-#define PIN_Echo    9
+#define PIN_Trigger 13
+#define PIN_Echo    12
 #define PIN_NoiseSensor A6
 
 
